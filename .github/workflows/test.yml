@@ -256,7 +256,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        ref: ${{ env.GITHUB_SHA }}
+        ref: ${{ github.event.pull_request.head.sha }}
     
     - uses: actions/download-artifact@v3
 
