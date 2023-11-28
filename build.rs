@@ -646,11 +646,8 @@ fn main() {
     // doesn't provide libR, R's shared library; in such a situation, just skip
     // setting `rustc-link-search`. Probably this setting itself is not used at
     // all except when compiled for testing, but we are not sure at the moment.
-    if let Ok(r_library) = r_paths.library.canonicalize() {
-        println!("cargo:rustc-link-search={}", r_library.display());
-    }
+    println!("cargo:rustc-link-search={}", r_paths.library.display());
     
-    #[cfg(feature = "use-bindgen")]
     println!("cargo:rustc-link-lib=dylib=R");
 
     println!("cargo:rerun-if-changed=build.rs");
